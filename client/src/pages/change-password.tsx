@@ -1,7 +1,6 @@
 import { Alert, AlertIcon, AlertTitle, Box, Button, Flex, Link, Spinner } from "@chakra-ui/react"
 import { Form, Formik, FormikHelpers } from "formik"
 import router, { useRouter } from "next/router"
-import React from "react"
 import { useState } from "react"
 import InputField from "../components/InputField"
 import Wrapper from "../components/Wrapper"
@@ -14,7 +13,7 @@ const ChangePassword = () => {
     const initialValues ={newPassword:''};
     const [tokenError,setTokenError] = useState('');
     const {data:authData, loading:authLoading} = useCheckAuth();
-    const [changPassword,{loading}] = useChangePasswordMutation();
+    const [changPassword,_] = useChangePasswordMutation();
     const onForgotPasswordSubmit = async (values:ChangePasswordInput,{setErrors}:FormikHelpers<ChangePasswordInput>)=>{
         if(query.userId && query.token){
             const response = await changPassword({
@@ -89,7 +88,7 @@ const ChangePassword = () => {
                                 <InputField
                                     name='newPassword' 
                                     placeholder="new Password" 
-                                    lable="New Password"
+                                    label="New Password"
                                     type="password"
                                 />
                             </Box>

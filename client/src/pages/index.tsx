@@ -11,7 +11,6 @@ import {
 } from '@chakra-ui/react'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import NextLink from 'next/link'
-import React from 'react'
 import Layout from '../components/Layout'
 import PostEditDeleteButtons from '../components/PostEditDeleteButtons'
 import { PostsDocument, usePostsQuery } from '../generated/graphql'

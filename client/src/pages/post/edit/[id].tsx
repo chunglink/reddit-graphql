@@ -69,7 +69,8 @@ const PostEdit = () => {
 
 	if (
 		!meLoading &&
-		!postLoading 
+		!postLoading &&
+		meData?.me?.id
 	)
 		return (
 			<Layout>

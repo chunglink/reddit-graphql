@@ -7,14 +7,13 @@ import NextLink from 'next/link'
 import { LoginInput, MeDocument, MeQuery, useLoginMutation, } from "../generated/graphql";
 import { mapFieldErrors } from "../helpers/mapFieldErrors";
 import { useCheckAuth } from "../utils/useCheckAuth";
-import React from "react";
 
 const Login = () => {
     const toast = useToast();
     const router= useRouter();
     const {data:authData, loading:authLoading} = useCheckAuth();
     const initialValues:LoginInput ={usernameOrEmail:'',password:''};
-    const [loginUser,{loading:_loginUserLoading,data,error}] = useLoginMutation(); 
+    const [loginUser,{loading:_loginUserLoading,error}] = useLoginMutation(); 
     
     const onLoginSubmit=async (values:LoginInput,{setErrors}:FormikHelpers<LoginInput>)=>{
         const response = await loginUser({
@@ -72,14 +71,15 @@ const Login = () => {
                             <InputField
                                 name='usernameOrEmail' 
                                 placeholder="Username or email" 
-                                lable="Account name"
+                                label="Account name"
+                                type="text"
                             />
                             
                             <Box mt={4}>
                                 <InputField
                                     name='password' 
                                     placeholder="Password" 
-                                    lable="Password"
+                                    label="Password"
                                     type="password"
                                 />
                             </Box>
